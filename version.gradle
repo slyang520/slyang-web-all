@@ -1,0 +1,14 @@
+ext {
+
+    appConfig = [
+            sourceCompatibility: 1.8,
+            targetCompatibility: 1.8,
+            profile            : "local",
+    ]
+
+    libConfig = [
+            springBootVersion         : "1.5.6.RELEASE",
+            springCloudVersion        : "Dalston.SR3",
+    ]
+
+}

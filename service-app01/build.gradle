@@ -1,0 +1,33 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${libConfig.springBootVersion}")
+    }
+}
+
+apply plugin: 'org.springframework.boot'
+
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+
+    // 引入framework 作为子模块
+    compile project(':moudle-framework-core')
+    compile project(':moudle-framework-mail')
+
+    compile('org.springframework.cloud:spring-cloud-starter-eureka')
+    compile('org.springframework.cloud:spring-cloud-starter-config')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile ('org.springframework.cloud:spring-cloud-starter-feign')
+    compile ('com.netflix.feign:feign-okhttp:8.18.0')
+    
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${libConfig.springCloudVersion}"
+    }
+}
