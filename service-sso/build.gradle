@@ -17,6 +17,7 @@ dependencies {
 //	compile('org.springframework.boot:spring-boot-starter-security')
 	compile ('org.springframework.cloud:spring-cloud-starter-ribbon')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile group: 'org.apache.shiro', name: 'shiro-spring-boot-web-starter', version: '1.4.0'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 

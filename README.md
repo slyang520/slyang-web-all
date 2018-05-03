@@ -9,3 +9,7 @@ Gradle 多项目构建
 Spring Cloud 
 Spring Boot 
 学习
+
+
+
+#gradle build -Dprofile=prod

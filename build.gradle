@@ -8,6 +8,7 @@
  */
 
 apply from: 'version.gradle'
+def profile = System.getProperty("profile") ?: "local"
 
 allprojects {
 
@@ -31,14 +32,29 @@ subprojects {
 
     repositories {
         mavenLocal()
-        mavenCentral()
-        jcenter()
-        maven { url "http://maven.aliyun.com/nexus/content/repositories/central" }
+        //mavenCentral()
+        //jcenter()
+        //google()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/google' }
+        maven { url 'https://plugins.gradle.org/m2/' }
         maven { url "https://jitpack.io" }
     }
 
     // java编译的时候缺省状态下会因为中文字符而失败
     [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+    buildscript {
+        repositories {
+            maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+            maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+            maven { url 'http://maven.aliyun.com/nexus/content/repositories/google' }
+        }
+        dependencies {
+            classpath("org.springframework.boot:spring-boot-gradle-plugin:${libConfig.springBootVersion}")
+        }
+    }
 
 }
 
@@ -48,7 +64,7 @@ project(':service-app01') {
     sourceSets {
         main {
             resources.srcDirs = ['src/main/resources',
-                                 "src/main/resources-${appConfig.profile}"]
+                                 "src/main/resources-${profile}"]
         }
     }
 
@@ -60,7 +76,7 @@ project(':service-configcenter') {
     sourceSets {
         main {
             resources.srcDirs = ['src/main/resources',
-                                 "src/main/resources-${appConfig.profile}"]
+                                 "src/main/resources-${profile}"]
         }
     }
 
@@ -72,7 +88,7 @@ project(':service-sso') {
     sourceSets {
         main {
             resources.srcDirs = ['src/main/resources',
-                                 "src/main/resources-${appConfig.profile}"]
+                                 "src/main/resources-${profile}"]
         }
     }
 
@@ -84,7 +100,7 @@ project(':service-eureka') {
     sourceSets {
         main {
             resources.srcDirs = ['src/main/resources',
-                                 "src/main/resources-${appConfig.profile}"]
+                                 "src/main/resources-${profile}"]
         }
     }
 

@@ -3,7 +3,6 @@ ext {
     appConfig = [
             sourceCompatibility: 1.8,
             targetCompatibility: 1.8,
-            profile            : "local",
     ]
 
     libConfig = [
