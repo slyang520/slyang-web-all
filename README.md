@@ -10,6 +10,8 @@ Spring Cloud
 Spring Boot 
 学习
 
+gradle :service-app01:clean && 
+gradle :service-app01:build -Dprofile=prod -x test
 
 
-#gradle build -Dprofile=prod
+-x test  忽略test

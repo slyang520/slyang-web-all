@@ -56,52 +56,16 @@ subprojects {
         }
     }
 
+    sourceSets {
+        main {
+            resources.srcDirs = ['src/main/resources',
+                                 "src/main/resources-${profile}"]
+        }
+    }
+
 }
 
 // app01 工程配置
 project(':service-app01') {
-
-    sourceSets {
-        main {
-            resources.srcDirs = ['src/main/resources',
-                                 "src/main/resources-${profile}"]
-        }
-    }
-
-}
-
-// configcenter 工程配置
-project(':service-configcenter') {
-
-    sourceSets {
-        main {
-            resources.srcDirs = ['src/main/resources',
-                                 "src/main/resources-${profile}"]
-        }
-    }
-
-}
-
-// sso 工程配置
-project(':service-sso') {
-
-    sourceSets {
-        main {
-            resources.srcDirs = ['src/main/resources',
-                                 "src/main/resources-${profile}"]
-        }
-    }
-
-}
-
-// eureka 工程配置
-project(':service-eureka') {
-
-    sourceSets {
-        main {
-            resources.srcDirs = ['src/main/resources',
-                                 "src/main/resources-${profile}"]
-        }
-    }
-
+    
 }
