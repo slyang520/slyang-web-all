@@ -12,8 +12,10 @@ def profile = System.getProperty("profile") ?: "local"
 
 allprojects {
 
-    task printlnProjectName << {
-        println project.name
+    task printlnProjectName  {
+        doFirst {
+            println 'this project name is : '+project.name
+        }
     }
 
 }
