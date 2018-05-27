@@ -13,5 +13,9 @@ Spring Boot
 gradle :service-app01:clean && 
 gradle :service-app01:build -Dprofile=prod -x test
 
+gradle :service-app01:clean && 
+gradle :service-app01:assemble -Dprofile=prod
+
+assemble build 区别只编译源码不执行测试
 
 -x test  忽略test

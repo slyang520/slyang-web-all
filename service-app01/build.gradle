@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat
+
 //buildscript {
 //    repositories {
 //        mavenCentral()
@@ -10,6 +12,19 @@
 apply plugin: 'org.springframework.boot'
 
 version = '0.0.1-SNAPSHOT'
+
+// 修改打包生成的文件
+assemble.doLast() {
+
+    copy {
+        from project.getBuildDir().path + '/libs'
+        into rootProject.getProjectDir().path + '/deploy/'+ new SimpleDateFormat("yyyy-MM-dd").format(new Date())
+        include '*.jar'
+        rename { String fileName ->
+            fileName = "app01.jar"
+        }
+    }
+}
 
 dependencies {
 
