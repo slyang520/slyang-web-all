@@ -10,6 +10,15 @@
 apply from: 'version.gradle'
 def profile = System.getProperty("profile") ?: "local"
 
+
+task testP  {
+    // gradle -Ptest=123 testP
+    // gradle -Dorg.gradle.project.test=1234 testP
+    doFirst {
+        println 'this testP  is : '+test
+    }
+}
+
 allprojects {
 
     task printlnProjectName  {
@@ -69,5 +78,5 @@ subprojects {
 
 // app01 工程配置
 project(':service-app01') {
-    
+
 }

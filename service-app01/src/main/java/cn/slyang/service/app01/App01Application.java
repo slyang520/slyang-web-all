@@ -2,6 +2,7 @@ package cn.slyang.service.app01;
 
 import cn.slyang.framwork.mail.EmailService;
 import cn.slyang.framwork.mail.FrameworkMailConfig;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;

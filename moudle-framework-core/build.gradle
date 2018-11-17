@@ -1,5 +1,48 @@
+apply plugin: 'maven-publish'
+
 version = '0.0.1-SNAPSHOT'
 
 dependencies {
+
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.6'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
+    compile 'com.alibaba:fastjson:1.2.47'
+
+}
+
+//打包源码
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            //指定group/artifact/version信息，可以不填。默认使用项目group/name/version作为groupId/artifactId/version
+            groupId project.group
+            artifactId project.name
+            version project.version
+            //如果是war包填写components.web，如果是jar包填写components.java
+            from components.java
+
+            //配置上传源码
+            artifact sourceJar {
+                classifier "sources"
+            }
+
+        }
+    }
+    repositories {
+        maven {
+            //指定要上传的maven私服仓库
+            url = "http://jenkins.maxrocky.com:8080/maven/content/repositories/thirdparty/"
+            //认证用户和密码
+            credentials {
+                //username 'admin'
+                //password 'maxrocky5721'
+            }
+        }
+    }
 }

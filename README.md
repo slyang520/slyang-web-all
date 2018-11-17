@@ -2,6 +2,7 @@
 ### app01   3002
 ### config-center  3003
 ### sso  3004
+### gateway  3005
 
 
 Gradle 多项目构建
